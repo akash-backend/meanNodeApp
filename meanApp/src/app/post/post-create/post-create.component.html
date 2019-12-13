@@ -1,0 +1,21 @@
+<div class="container">
+    <h2>Demo Form</h2>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+        <div class="form-group">
+        <label for="email">Title:</label>
+        <input type="text" class="form-control"  placeholder="Enter Title"
+        formControlName="title"
+        >
+        <P *ngIf="form.get('title').invalid">Please enter a post title.</P>
+        </div>
+        <div class="form-group">
+        <label for="pwd">Content:</label>
+        <textarea class="form-control"  placeholder="Enter Content"
+        formControlName="content"
+        ></textarea>
+        <p *ngIf="form.get('content').invalid">Please enter a post content</p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

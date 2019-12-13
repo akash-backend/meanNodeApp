@@ -1,0 +1,18 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="container" *ngIf="posts.length > 0 && !isLoading">
+    <div class="row">
+    <div class="col-md-12 my-4 border-bottom" *ngFor="let post of posts">
+        <h5>{{post.title}}</h5>
+        <p class="d-inline-block mt-2">{{post.content}}</p>
+
+        <input *ngIf="userIsAuthenticated  && userId === post.creator" type="button" class="btn btn-danger float-right ml-3" value="Delete" (click)="onDelete(post.id)">
+        <input *ngIf="userIsAuthenticated && userId === post.creator" type="button" class="btn btn-primary float-right" value="edit" [routerLink]="['/edit', post.id]">
+    </div>
+    </div>
+
+</div>
+
+<mat-paginator [length]="totalPosts" [pageSize]="postsPerPage" [pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"
+*ngIf="posts.length > 0"></mat-paginator>
+
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts added yet!</p>

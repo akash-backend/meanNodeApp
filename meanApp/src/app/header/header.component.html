@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+    <ul class="navbar-nav w-100">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/" >Home</a>
+      </li>
+      <li *ngIf="userIsAuthenticated" class="nav-item ml-auto" routerLinkActive="active">
+        <a class="nav-link" routerLink="/create" >New Post</a>
+      </li>
+      <li *ngIf="!userIsAuthenticated" class="nav-item ml-auto" routerLinkActive="active">
+        <a class="nav-link" routerLink="/login"> Login </a>
+      </li>
+
+      <li *ngIf="!userIsAuthenticated" class="nav-item ml-auto" routerLinkActive="active">
+          <a class="nav-link" routerLink="/signup"> Signup </a>
+        </li>
+
+
+      <li *ngIf="userIsAuthenticated" class="nav-item ml-auto" routerLinkActive="active">
+          <a class="nav-link" (click) = "onLogout()"> Logout </a>
+        </li>
+
+    </ul>
+  </nav>

@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Signup</h2>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)=onSignup(loginForm) #loginForm ="ngForm" *ngIf="!isLoading">
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" ngModel placehoder="E-mail" #emnailInput="ngModel" class="form-control" required email>
+        <p *ngIf="emnailInput.invalid">Please enter valid email id</p>
+        </div>
+        <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" name="password" ngModel  #passwordInput="ngModel" class="form-control" required>
+      <p *ngIf="passwordInput.invalid">Please enter password </p>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
